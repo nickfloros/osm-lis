@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@osm-lis/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@osm-lis/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@osm-lis/ovp-lib": ["libs/ovp-lib/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

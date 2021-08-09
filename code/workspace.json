@@ -184,6 +184,77 @@
           }
         }
       }
+    },
+    "ovp-lib": {
+      "root": "libs/ovp-lib",
+      "sourceRoot": "libs/ovp-lib/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/ovp-lib/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ovp-lib"],
+          "options": {
+            "jestConfig": "libs/ovp-lib/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ovp-test": {
+      "root": "apps/ovp-test",
+      "sourceRoot": "apps/ovp-test/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/ovp-test",
+            "main": "apps/ovp-test/src/main.ts",
+            "tsConfig": "apps/ovp-test/tsconfig.app.json",
+            "assets": ["apps/ovp-test/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/ovp-test/src/environments/environment.ts",
+                  "with": "apps/ovp-test/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "ovp-test:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/ovp-test/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/ovp-test"],
+          "options": {
+            "jestConfig": "apps/ovp-test/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
