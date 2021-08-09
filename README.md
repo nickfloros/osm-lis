@@ -3,12 +3,12 @@
 
 a place to experiment with open street maps. 
 
-scripts for deploy open steet docker components for
+`scripts` for deploy open steet docker components for
 - overpass turbo api
 - route server
 - geocoder
 - tile server
 
-all this has been done by other I just pull everything together
+All docker scripts have been done by others. The scripts simply control deployment, start and stop
 
-an number of nodejs api to query overpass and geocoder
+`code` contains definition of a set of api's and sample ux to demonstrate results of analysis
