@@ -17,7 +17,7 @@ echo $1 $2
 
 dockerName="overpass-${2}"
 
-case "$2" in 
+case "$2" in
 
   great-britain)
    region="great-britain"
@@ -43,10 +43,10 @@ esac
 
 echo $region $apiPort
 
-case "$1" in 
-  deploy) 
+case "$1" in
+  deploy)
     ./osrm-backend-deploy.bash ${dockerName} ${region} ${port}
-    ;; 
+    ;;
   start)
     echo "restarting ${dockerName}"
     docker restart ${dockerName}

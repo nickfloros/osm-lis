@@ -2,7 +2,7 @@
 
 function validate_url(){
   if [[ `wget -S --spider $1  2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then
-    return 0
+    return 1
   else
     echo "$2 does not exit"
     exit 1
