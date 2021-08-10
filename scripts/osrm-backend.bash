@@ -4,7 +4,7 @@ help() {
   echo "script to controll docker internaces of overpass api"
   echo "usage : osrm-backend.bash [cmd] [area]"
   echo "cmd : [deploy|start|stop]  "
-  echo "area : [ireland | great-britain | isle-of-man | guernsey-jersey | wales | scotland | england] "
+  echo "area : [ireland | great-britain | isle-of-man | guernsey-jersey | wales | scotland | england|monaco] "
 
 }
 
@@ -12,10 +12,10 @@ help() {
 
 cmd=$1
 region=""
-rootPort=7000
+rootPort=7120
+rootStore="${HOME}/opt/open-street-dat"
 echo $1 $2
 
-dockerName="overpass-${2}"
 
 case "$2" in
 
@@ -35,17 +35,22 @@ case "$2" in
     region="guernsey-jersey"
     apiPort=$(($rootPort+3))
     ;;
+ monaco)
+    region="monaco"
+    apiPort=$(($rootPort+4))
+    ;;
  *)
    echo "region $2 not supported"
    help
    exit 1
 esac
 
+dockerName="osrm-backend--${region}"
 echo $region $apiPort
 
 case "$1" in
   deploy)
-    ./osrm-backend-deploy.bash ${dockerName} ${region} ${port}
+    ./osrm-backend-deploy.bash ${region} ${port}
     ;;
   start)
     echo "restarting ${dockerName}"
