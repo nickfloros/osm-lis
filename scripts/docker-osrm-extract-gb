@@ -1,0 +1,24 @@
+#!/bin/bash
+
+export WSPACE=/home/nfloros/osrm-gb
+export osrmFile=great-britain-latest
+export PBF=${osrmFile}.osm.pbf
+export OSRM=${osrmFile}.osrm
+
+if [[ ! -e ${WSPACE}/${PBF} ]]; then 
+	echo ${PBF}
+	echo ${OSRM}
+	echo ${WSPACE}/${PBF} not found ... 
+        exit 1
+fi
+
+# docker run -t -v "${WSPACE}:/data" osrm/osrm-backend osrm-extract -p /opt/car.lua /data/${PDF}
+
+#docker run -t -v "${WSPACE}:/data" osrm/osrm-backend osrm-partition /data/${OSRM}
+#docker run -t -v "${WSPACE}:/data" osrm/osrm-backend osrm-customize /data/${OSRM}
+
+docker run \
+	-v ${WSPACE}/${PBF}:/data.osm.pbf \
+	-v openstreetmap-data:/var/lib/postgresql/10/main \
+	overv/openstreetmap-tile-server \
+	import 

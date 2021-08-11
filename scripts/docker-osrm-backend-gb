@@ -1,0 +1,15 @@
+#!/bin/bash
+
+export WSPACE=/home/nfloros/osrm-gb
+export osrmFile=great-britain-latest
+export PBF=${osrmFile}.osm.pbf
+export OSRM=${osrmFile}.osrm
+
+if [[ ! -e ${WSPACE}/${OSRM} ]]; then 
+	echo ${WSPACE}/${iOSRM} not found ... 
+        exit 1
+fi
+
+# docker run -t -v "${WSPACE}:/data" osrm/osrm-backend osrm-extract -p /opt/car.lua /data/${PDF}
+
+docker run --name osrm-gb-backend -d -i -p 5000:5000 -v "${WSPACE}:/data" osrm/osrm-backend osrm-routed --algorithm mld /data/${OSRM} &

@@ -1,0 +1,11 @@
+#!/bin/bash
+#docker volume create openstreetmap-rendered-tiles
+
+docker run \
+    --name osrm-tiles \
+    -p 7080:80 \
+    -e THREADS=8 \
+    -v openstreetmap-data:/var/lib/postgresql/10/main \
+    -v openstreetmap-rendered-tiles:/var/lib/mod_tile \
+    -d overv/openstreetmap-tile-server \
+    run

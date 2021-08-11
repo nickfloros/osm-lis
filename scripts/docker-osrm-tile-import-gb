@@ -1,0 +1,5 @@
+docker run \
+    -v /home/nfloros/osrm/monaco-latest.osm.pbf:/data.osm.pbf \
+    -v openstreetmap-data:/var/lib/postgresql/10/main \
+    overv/openstreetmap-tile-server \
+    import
