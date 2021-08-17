@@ -20,7 +20,7 @@ function validate_url(){
 # overpassDiff="http://download.openstreetmap.fr/replication/europe/${region}/minute/"
 # validate_url "${region}" "${overpassDiff}"
 
- hostStore="/data/docker/overpass_db/${region}/"
+ hostStore="$HOME/docker/data/overpass_db/${region}/"
 
  echo "deploying $dockerName $region $port $hostStore"
 

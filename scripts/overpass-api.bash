@@ -21,7 +21,7 @@ case "$2" in
 
   great-britain)
    region="great-britain"
-   apiPort= rootPort
+   apiPort=$rootPort
    ;;
   ireland-and-northen-ireland)
    region="irenland-and-northen-ireland"
