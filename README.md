@@ -16,3 +16,5 @@ All docker scripts have been done by others. The scripts simply control deployme
 interesting article to create an openstreetmap tile servers on ubuntu ..
 
 https://www.linuxbabe.com/ubuntu/openstreetmap-tile-server-ubuntu-18-04-osm
+
+https://github.com/locationtech
